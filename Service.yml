@@ -1,0 +1,28 @@
+# kubectl apply -f Service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hernan-chumpitaz-service
+  namespace: hernan-chumpitaz-namespace
+spec:
+  type: NodePort
+  ports:
+  - port: 30001      
+    targetPort: 8085  
+    nodePort: 30001   
+  selector:
+    app: backend-hernan-chumpitaz-deployment  
+---    
+apiVersion: v1
+kind: Service
+metadata:
+  name: hernan-chumpitaz-servicee
+  namespace: hernan-chumpitaz-namespace
+spec:
+  type: NodePort
+  ports:
+  - port: 30002      
+    targetPort: 4200  
+    nodePort: 30002  
+  selector:
+    app: frontend-hernan-chumpitaz-deployment  
